@@ -1,0 +1,53 @@
+\documentclass[11pt]{modart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{lastpage}
+\usepackage{epstopdf}
+\usepackage{fancyhdr}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+% Homework Specific Information
+\newcommand{\hmwkTitle}{Homework 2}
+\newcommand{\hmwkDueDate}{February 29, 2012}
+\newcommand{\hmwkClass}{Computational Neuroscience}
+\newcommand{\hmwkClassInstructor}{John Rinzel}
+\newcommand{\hmwkAuthorName}{Raphael Sofaer}
+
+% Setup the header and footer
+\pagestyle{fancy}                                                       %
+\lhead{\hmwkAuthorName}                                                 %
+\rhead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}  %
+\lfoot{\lastxmark}                                                      %
+\cfoot{}                                                                %
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}}                          %
+\renewcommand\headrulewidth{0.4pt}                                      %
+\renewcommand\footrulewidth{0.4pt}                                      %
+
+\title{\large{\hmwkAuthorName}\vspace{0.1in}\\\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\\vspace{0.1in}\large{\textit{\hmwkClassInstructor}}\vspace{0.5in}}
+\author{}
+\date{}
+  
+\begin{document}
+\maketitle
+
+\section{2.1. Run the NIA tutorials.}
+\subsection{Chattering Ion Channels}
+\subsection{The Ca Action Potential}
+\section{2.2. Summarize and expand on one tutorial.}
+\section{2.3. Specific Questions:}
+\subsection{From the “Chattering” Tutorial.  Estimate the conductance of a single Na+ 
+channel and single K+ channel.  Describe how you did it}
+\subsection{From the “Chattering” Tutorial.  No K+ channels; 200 Na+ channels.  For 
+“testing”, use a 20 ms duration and 0 mV level.  For “conditioning” use a 20 ms 
+duration and 3 different levels:  -65 mV, -80 mV, -95 mV.  Describe the features 
+of Ina vs t for the 3 cases (plotted with 3 colors for 0<t<40ms, keep lines).  Why 
+do curves differ if all were done with the same testing level?}
+\subsection{Same as b but with 200 K+ channels and no Na+ channels}
+
+\end{document}

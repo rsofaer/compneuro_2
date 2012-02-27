@@ -1,0 +1,1 @@
+./../latex_class/modart.cls
