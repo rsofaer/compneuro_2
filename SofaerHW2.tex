@@ -1,4 +1,4 @@
-\documentclass[11pt]{modart}
+\documentclass[11pt]{article}
 \usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
 \geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
 %\geometry{landscape}                % Activate for for rotated page geometry
@@ -40,31 +40,108 @@
 \subsection{Chattering Ion Channels}
 \subsubsection{First run}
 With a conditioning voltage of -65mV and a testing voltage of -11mV,
-we see both outward (positive) K current, and inward (negative) Na current.  
-Sometimes we see both, there is almost always at least one opening of a channel.
+we sometimes see both outward (positive) K current, and sometimes inward (negative) Na current.  
+Sometimes we see both, but there is almost always at least one opening of a channel.
+
 \subsubsection{Channel opening shapes}
 The channels open close to instantly, with a very steep climb up to a flat plateau, and close almost instantly as well.
 When the voltage gradient is lower, the flow of current is much lower as well.
 In other words, it snaps open and maintains the same conductance until it snaps closed.
+
 \subsubsection{When does the channel open?}
 The channels open probabilistically, so the depolarization does not open the channels,
 it drastically increases the probability that a channel will open.
+
 \subsubsection{What if you do not apply a depolarizing voltage clamp step?}
 With no depolarizing current, K channels still occasionally open, but the low voltage gradient keeps the current small.
+
 \subsubsection{K channels - How do you know they are K channels?}
 The fact that the current is outward tells us that it is K channels, not Na channels, which we are observing.
+
 \subsubsection{Are there two current amplitudes?}
 Yes.  If the depolarization ends while the channel is open, we see a lower amplitude.
+
+\subsubsection{The K Channel at different depolarization magnitudes}
+As the magnitude of the depolariztion was increased, the K channel opened 
+more often and stayed open longer, and the flow of current through the
+channel was greater.  
+
+\subsubsection{Na Channel}
+The Na channel tends to open at the beginning of the depolarization, while
+the K channel tends to open later in the depolarization.
+It also opens for a shorter time, in general.
+It is impossible to tell from observing current whether a channel
+has closed or temporarily inactivated.
+The refactory period, the quick opening, and the direction of the current
+all suggest that the channel being examined is an Na channel.
+We could conduct an experiment where the concentration of Na or K is 
+the same on both sides of he membrane patch, which would cause no current to
+flow across one of the types of channels.
+
+\subsubsection{Populations of channels}
+In the two K and two Na channel simulation, it is impossible to tell whether
+one channel opened twice or the two channels opened seperately if there are
+two separate current plateaus.\\
+By the time I was running the 1000 channel simulation, the outline of the currents is
+starting to look like the full membrane graph from the early tutorials.  At 10000 channels,
+the graph is quite smooth, as the probabilistic behavior of individual channels is evened out.
+
 \subsection{The Ca Action Potential}
+\subsubsection{What does the Ca potential look like?}
+The Ca channels open and close in about the same way as the K channels,
+so there is a long plateau-ish hump, which then falls off.
+
+\subsubsection{What does the Ca and Na action potential look like?}
+When there are also Na channels, the combined action potential can happen with a much smaller current injection,
+only the injection required to start the Na action potential.
+The Na channels cause the Ca channels to open, resulting in a sort of flattened Na action potential,
+with a longer, flatter descent for a little while before the Ca channels close and the voltage plunges back 
+below the resting voltage until the K channels close.
+
+
+
 \section{2.2. Summarize and expand on one tutorial.}
 \section{2.3. Specific Questions:}
 \subsection{From the “Chattering” Tutorial.  Estimate the conductance of a single Na+ 
 channel and single K+ channel.  Describe how you did it}
+I wanted to estimate the conductance by using Ohm's law, $I = V*G$, but as I explored the graphs,
+I realized that no matter how I changed the conductance in the patch parameters, nothing in the graphs changed.
+Since the math still worked out to the default conductance, I decided to proceed as if the conductance was just unchangeable.
+Interestingly, the Normalized Current graph seemed to be the one graph that wasn't normalized.
+
+For the K channels at a test voltage of -11 mV, I found a conductance of 0.036 nanoSiemens:
+$$I = V*G$$
+$$2.37601pA = 66mV*G$$
+$$0.036 nS = G$$
+
+For the Na channels at the same voltage, I found a conductance of 0.1109 nanoSiemens:
+$$-7.31995 pA = -66mV*G$$
+$$0.110908 nS = G$$
+
+
 \subsection{From the “Chattering” Tutorial.  No K+ channels; 200 Na+ channels.  For 
 “testing”, use a 20 ms duration and 0 mV level.  For “conditioning” use a 20 ms 
 duration and 3 different levels:  -65 mV, -80 mV, -95 mV.  Describe the features 
-of Ina vs t for the 3 cases (plotted with 3 colors for 0<t<40ms, keep lines).  Why 
+of Ina vs t for the 3 cases (plotted with 3 colors for $0<t<40$ms, keep lines).  Why 
 do curves differ if all were done with the same testing level?}
-\subsection{Same as b but with 200 K+ channels and no Na+ channels}
 
+With a conditioning level of -65mV, there was some sporadic and insignificant Na channel opening
+before the testing level started, then when the testing level started, there was a spike to -35pA,
+then a ramp back down to the the sporadic random openings 5ms after the stimulus began.\\
+With a conditioning level of -80mV, there were no random channel openings at all, then a similarly shaped
+but much bigger spike, down to -66pA, before ramping back to random channel openings at about 5ms after
+the stimulus began.\\
+With a conditioning level of -95mV, the shape was almost exactly the same as with -80, with a slightly
+bigger amperage spike, to -75pA.\\
+I hypothesize that the difference die to conditioning levels is because with a greater conditioning voltage,
+more channels are deactivated when the stimulus starts, so no current can flow through them even if 
+they would have opened.
+\subsection{Same as b but with 200 K+ channels and no Na+ channels}
+With 200 K channels and no Na channels, there was no difference in the shape of the amperage vs time graph
+in the 3 trials.  There were occasional random openings of a channel or two before the stimulus,
+then when the test level was applied, the amperage ramped up to around 150pA over about 4.8ms,
+then plateaued until the stimulus ended.  It dropped instantly to 25pA when the return voltage was applied,
+because of the much smaller voltage gradient, then slowly ramped down to 0pA as the channels closed over about 10ms.
+I think that the shape was not dependent on the conditioning level because K channels do not deactivate,
+they only open and close.
 \end{document}
